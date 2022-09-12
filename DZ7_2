@@ -1,0 +1,52 @@
+// Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+
+
+Console.WriteLine("Введите колличество строк: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите колличество столбцов: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+
+void PrintArray(int[,] matr)
+{
+    for (int i = 0; i < matr.GetLength(0); i++)
+    {
+        for (int j = 0; j < matr.GetLength(1); j++)
+        {
+            Console.Write($"{matr[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+void FillArray(int[,] matr)
+{
+    for (int i = 0; i < matr.GetLength(0); i++)
+    {
+        for (int j = 0; j < matr.GetLength(1); j++)
+        {
+            matr[i, j] = new Random().Next(0, 100);
+        }
+        Console.WriteLine();
+    }
+}
+
+int[,] matrix = new int[m, n];
+
+FillArray(matrix);
+PrintArray(matrix);
+
+Console.WriteLine("Введите номер строки: ");
+int nn = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите номер столбца: ");
+int mm = Convert.ToInt32(Console.ReadLine());
+
+if (nn > matrix.GetLength(0) || mm > matrix.GetLength(1))
+{
+    Console.WriteLine("Такого элемента нет");
+}
+else
+{
+    Console.WriteLine($"значение элемента {mm} строки и {nn} столбца равно {matrix[nn-1, mm-1]}");
+}
